@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Devnet Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header class="navbar"> <!-- block -->
+        <div class="navbar__brand">
+            <img class="navbar__logo" src="logo.svg" alt="blog_logo" /> Devnet Blog
+        </div> <!-- element -->
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1>Add new entry</h1>
+            <form class="form" action="/entry" method="POST">
+                <p class="form__input">
+                    <label class="form__label" for="entry">Entry contents:</label>
+                    <textarea name="content" id="entry" class="form__textarea"></textarea>
+                </p>
+                <button type="submit" class="form__submit">Add entry</button>
+            </form>
+        </section>
+        <section>
+            <h1>Recent posts</h1>
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">A bit of chill today</h2>
+                    <time class="entry__date" datetime="07-01-2023">• Jan 07</time>
+                </div>
+                <p class="entry__content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi at aut commodi delectus dicta dolorum eos, eum fugiat,
+                    iusto minus modi molestias non placeat porro possimus
+                    reprehenderit unde voluptate voluptatibus.
+                </p>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer_item">Made by LM</a>
+                <a class="footer_item">Checkout my projects</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="#">Recent</a>
+                    <a class="footer__item" href="#">Calendar</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item" href="#">About</a>
+                    <a class="footer__item" href="#">How this was made</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+</body>
+</html>
