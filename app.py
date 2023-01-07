@@ -1,16 +1,37 @@
-# This is a sample Python script.
+"""
+with j2 we can process and render expressions, data structures(lists, dicts, custom objects),
+conditionals({% if expression %}; {% endif %}),
+loops({% for item in list; for key, value in dict.items() %}; {% endfor %})
+"""
+import datetime
+from flask import Flask, render_template, request
+from pymongo import MongoClient
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+def create_app():
+    app = Flask(__name__)
+    client = MongoClient("mongodb+srv://lucian:mongodbpa55@cluster0.ai1jgol.mongodb.net/test")
+    app.db = client.webapp
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    # entries = []
 
+    @app.route("/", methods=["GET", "POST"])
+    def home():
+        print([e for e in app.db.entries.find({})])
+        if request.method == "POST":
+            entry_content = request.form.get("content")
+            formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
+            # entries.append((entry_content, formatted_date))
+            app.db.entries.insert_one({"content": entry_content, "date": formatted_date})
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+        entries_with_date = [
+            (entry["content"],
+             entry["date"],
+             datetime.datetime.strptime(entry["date"], "%Y-%m-%d").strftime("%b %d"))
+            for entry in app.db.entries.find({})
+        ]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        return render_template("home.html", entries=entries_with_date)
+
+    return app
+
