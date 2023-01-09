@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+        <main class="main main--content">
+            <dl>
+                <div class="contact">
+                    <dt>Email:</dt>
+                    <dd class="contact__details">
+                        <a class="contact__link" href="mailto:info@devnet.com">
+                            info [at] devnet.com
+                        </a>
+                    </dd>
+                </div>
+                <div class="contact">
+                    <dt>Github:</dt>
+                    <dd class="contact__details">
+                        <a class="contact__link" href="https://gitbuh.com/devnet">
+                            @devnet
+                        </a>
+                    </dd>
+                </div>
+                <div class="contact">
+                    <dt>LinkedIn:</dt>
+                    <dd class="contact__details">
+                        <a class="contact__link" href="https://linkedin.com/devnet">
+                            @devnet
+                        </a>
+                    </dd>
+                </div>
+            </dl>
+        </main>
+    {% endblock %}
+</body>
+</html>
